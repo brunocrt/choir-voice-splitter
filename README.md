@@ -48,6 +48,24 @@ The explicit preparation command requires internet and downloads HT-Demucs weigh
 
 CPU inference is supported. NVIDIA CUDA is optional on Windows/Linux with a compatible GPU and PyTorch installation. macOS uses CPU in this version; MPS has not been implemented. CUDA has not been validated on the development host.
 
+## Model-download certificate errors on macOS
+
+If `--prepare-model` fails with `CERTIFICATE_VERIFY_FAILED: unable to get local issuer certificate`, Python cannot verify the HTTPS certificate chain. With a python.org macOS installation, run its certificate setup script (use your installed Python version):
+
+```sh
+open "/Applications/Python 3.14/Install Certificates.command"
+```
+
+Wait for that script to finish successfully, then retry in the activated virtual environment:
+
+```sh
+python -m choir_splitter --prepare-model
+```
+
+If that script is absent, use the certificate setup instructions for your Python distribution. On a company network with HTTPS inspection, ask IT for the trusted CA bundle and set `SSL_CERT_FILE` to its path before retrying. A public CA bundle alone may not include your company's CA. Keep TLS verification enabled.
+
+Python 3.12 was used for development validation. The supplied macOS error log uses Python 3.14; this certificate failure occurs before inference and does not by itself indicate a Python/Demucs compatibility problem.
+
 ## Use
 
 1. Add or drag in recordings. Duplicates are skipped.
