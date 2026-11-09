@@ -1,0 +1,8 @@
+# Path to a product release
+
+1. **Completed prototype foundation:** PySide6 desktop, local codecs, register enhancement, optional HT-Demucs integration, background sequential jobs, cancellation, playback, export, versioned project save/reopen and generated result assets.
+2. **Choir quality gate:** collect representative choir/piano recordings with rights and part references; have singers/directors compare original, EQ baseline and Demucs-enhanced output. Decide whether the product can honestly be described as an enhancer. Evaluate dedicated pretrained SATB models if compatible, licensed weights are available. No custom training is required for this phase.
+3. **Release hardening:** native Windows/macOS tests, real audio-device tests, fully offline inference validation, CPU/CUDA benchmarking, disk-space checks, long-recording streaming, actionable error dialogs/logs, model integrity/provenance display, cache cleanup, incremental/crash recovery and source relinking.
+4. **Distribution:** lock verified dependency sets per platform, bundle FFmpeg with notices, implement an AI inference sidecar, build/sign/notarize installers, test install/update/uninstall on clean machines. Current PyInstaller recipe is DSP-only and not a tested native installer.
+5. **Practice improvements:** pitch-preserving slow playback, A/B playback at the same time position, looped sections, original/voice blend, waveform navigation and score alignment.
+6. **Future research:** score-assisted separation, section-guided inference and custom choir models only after data rights, evaluation and maintenance costs are understood. Learned SATB separation must earn its label through reference and listening tests.

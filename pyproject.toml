@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "choir-voice-splitter"
+version = "0.1.0"
+description = "Offline choir rehearsal desktop application"
+requires-python = ">=3.12"
+dependencies = ["PySide6>=6.7,<7", "numpy>=1.26,<3", "scipy>=1.12,<2", "soundfile>=0.12,<1"]
+
+[project.optional-dependencies]
+ai = ["demucs==4.0.1", "torch>=2.6", "torchaudio>=2.6"]
+dev = ["pytest>=8", "pyinstaller>=6"]
+
+[project.scripts]
+choir-splitter = "choir_splitter.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
